@@ -4,12 +4,14 @@
 - Python 3.x
 - Flask
 
+## Install Dependencies
+
 ## Installation
 1. Clone the repository
-`git clone https://github.com/[your_username]/p2p-payment-app-backend.git`
+`git clone https://github.com/thevictorwhyte/p2p-payment-app.git`
 
 2. Navigate to the project directory
-`cd p2p-payment-app-backend`
+`cd p2p-payment-app`
 
 3. Create a virtual environment
 `python3 -m venv venv`
@@ -25,18 +27,33 @@
 1. Start the Flask development server
 `python run.py`
 
-2. The backend should now be running at `http://localhost:5000/`. To verify, navigate to `http://localhost:5000/users` in your browser or using a tool such as `curl` or `httpie`. You should receive a message saying "Welcome to the P2P Payment App Backend".
+2. The backend should now be running at `http://localhost:5000/`.
+
+## File Structure
+
+```
+.
+├── app
+│   ├── __init__.py
+│   ├── api.py
+│   └── models.py
+├── tests
+│   └── test_api.py
+├── venv
+├── requirements.txt
+├── run.py
+└── README.md
+```
 
 ## Endpoints
-- `/users` (GET and POST)
-  - GET: Retrieve details of a user
+- `/users` (POST)
   - POST: Add a new user
 - `/deposit` (POST)
   - POST: Deposit money into the app
 - `/transfer` (POST)
   - POST: Send money to another user in the app
-- `/balance` (GET)
-  - GET: Retrieve a user's balance in the app
+- `/balance` (POST)
+  - POST: Retrieve a user's balance in the app
 - `/withdraw` (POST)
   - POST: Transfer money out of the app
 

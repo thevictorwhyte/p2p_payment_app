@@ -45,17 +45,7 @@
 ```
 
 ## Endpoints Documentation
-Documentation of available API endpoints including the URL, request parameters, and the response body
-- `/users` (POST)
-  - POST: Add a new user
-- `/deposit` (POST)
-  - POST: Deposit money into the app
-- `/transfer` (POST)
-  - POST: Send money to another user in the app
-- `/balance` (POST)
-  - POST: Retrieve a user's balance in the app
-- `/withdraw` (POST)
-  - POST: Transfer money out of the app
+Documentation of available API endpoints including the URL, request parameters, and the response body.
 
 ### `POST /users`
 - Adds a new user to the system.
@@ -75,6 +65,89 @@ Documentation of available API endpoints including the URL, request parameters, 
         "email": "victor@gmail.com",
         "id": "8edfe67e-2a8d-428e-bcf5-0fc9aa8db63c",
         "name": "Victor David"
+    }
+  }
+  ```
+
+### `POST /deposit`
+- Deposit money into the system.
+- Sample Request body:
+  ```json
+  {
+    "email": "victor@gmail.com",
+    "amount": 10
+  }
+  ```
+- Sample response object:
+  ```json
+  {
+    "success": true,
+    "user": {
+        "balance": 10,
+        "email": "victor@gmail.com",
+        "name": "Victor David"
+    }
+  }
+  ```
+
+### `POST /withdraw`
+- Transfer money out of the system.
+- Sample Request body:  
+  ```json
+  {
+    "email": "victor@gmail.com",
+    "amount": 10
+  }
+  ```
+- Sample response object:
+  ```json
+  {
+    "success": true,
+    "user": {
+        "balance": 10,
+        "email": "victor@gmail.com",
+        "name": "Victor David"
+    }
+  }
+  ```
+
+### `POST /send_money`
+- Send money to other app users.
+- Sample Request body:  
+  ```json
+  {
+    "senderEmail": "victor@gmail.com",
+    "receiverEmail": "david@gmail.com",
+    "amount": 25
+  }
+  ```
+- Sample response object:
+  ```json
+  {
+    "data": {
+        "amount": 25,
+        "receiver": "David Mark",
+        "sender": "Victor David"
+    },
+    "success": true
+  }
+  ```
+
+### `POST /balance`
+- Check balance.
+- Sample Request body:  
+  ```json
+  {
+    "email": "david@gmail.com"
+  }
+  ```
+- Sample response object:
+  ```json
+  {
+    "success": true,
+    "user": {
+        "balance": 30,
+        "name": "David Mark"
     }
   }
   ```

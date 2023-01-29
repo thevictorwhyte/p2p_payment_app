@@ -20,25 +20,31 @@ class P2PApp:
   def add_user(self, name, email):
     userId = str(uuid.uuid4())
     user = User(userId, name, email)
-    self.users[userId] = user
+    self.users[email] = user
     return user
 
-  def get_user(self, userId):
-    return self.users.get(userId, None)
+  def get_user(self, email):
+    return self.users.get(email, None)
 
-  def deposit(self, userId, amount):
-      user = self.users[userId]
+  def deposit(self, email, amount):
+      user = self.users[email]
       user.deposit(amount)
       return user
 
-  def withdraw(self, userId, amount):
-      user = users[userId]
+  def withdraw(self, email, amount):
+      user = self.users[email]
+      if user.balance < amount:
+        raise ValueError('Insufficient funds')
       user.withdraw(amount)
       return user
 
   def send_money(self, sender, receiver, amount):
       sender_user = self.users[sender]
       receiver_user = self.users[receiver]
+
+      if sender_user.balance < amount:
+        raise ValueError('Insufficient funds')
+
       sender_user.withdraw(amount)
       receiver_user.deposit(amount)
       return sender_user, receiver_user

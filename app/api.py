@@ -19,7 +19,7 @@ def add_user():
     return jsonify({
       "success": True,
       "user": {"id": user.userId, "name": user.name, "email": user.email, "balance": user.balance}
-    })
+    }), 201
   except:
       abort(422)
 

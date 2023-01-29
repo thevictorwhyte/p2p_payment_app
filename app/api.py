@@ -78,7 +78,7 @@ def send_money():
   error = validate_request_data(data, ['senderEmail', 'receiverEmail', 'amount'])
 
   if error:
-    return jsonify({"error": error}), 400
+    return jsonify({"sucess": False, "error": error}), 400
 
   sender_email = data.get('senderEmail', None)
   sender = p2p_app.get_user(sender_email)
@@ -98,6 +98,32 @@ def send_money():
     })
   except ValueError as e:
         return jsonify({"success": False, "error": str(e)}), 400
+  
+@app.route("/balance", methods=["POST"])
+def check_balance():
+  data = request.get_json()
+  error = validate_request_data(data, ['email'])
+  if error:
+    return jsonify({'success': False, "error": error}), 400
+
+  try:
+    email = data.get('email', None)
+    user = p2p_app.get_user(email)
+
+    if user is None:
+      return jsonify({ "success": False, "error": "No user exists with that email"}), 404
+
+    balance = p2p_app.check_balance(user.email)
+    return jsonify({
+      "success": True,
+      "user": {
+        "name": user.name,
+        "balance": balance
+      }
+    })
+  except:
+    abort(422)
+
   
 
 # ERROR HANDLERS

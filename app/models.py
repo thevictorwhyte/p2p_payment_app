@@ -49,7 +49,7 @@ class P2PApp:
       receiver_user.deposit(amount)
       return sender_user, receiver_user
 
-  def check_balance(self, userId):
-      return users[userId].balance
+  def check_balance(self, email):
+      return self.users[email].balance
 
 app = P2PApp()

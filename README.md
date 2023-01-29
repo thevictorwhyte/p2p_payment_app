@@ -28,6 +28,12 @@
 
 2. The backend should now be running at `http://localhost:5000/`.
 
+## Testing
+To run the test located in `/test_api.py`. Run 
+```
+python3 test_api.py
+```
+
 ## File Structure
 
 ```
@@ -36,12 +42,14 @@
 │   ├── __init__.py
 │   ├── api.py
 │   └── models.py
-├── tests
-│   └── test_api.py
-├── venv
+├── errors
+│   ├── __init__.py
+│   ├── validate_request_data.py
+├── .gitignore
+├── README.md
 ├── requirements.txt
 ├── run.py
-└── README.md
+└── test_api.py
 ```
 
 ## Endpoints Documentation
@@ -104,7 +112,7 @@ Documentation of available API endpoints including the URL, request parameters, 
   {
     "success": true,
     "user": {
-        "balance": 10,
+        "balance": 0,
         "email": "victor@gmail.com",
         "name": "Victor David"
     }
@@ -146,7 +154,7 @@ Documentation of available API endpoints including the URL, request parameters, 
   {
     "success": true,
     "user": {
-        "balance": 30,
+        "balance": 25,
         "name": "David Mark"
     }
   }

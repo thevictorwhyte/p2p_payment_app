@@ -24,12 +24,12 @@
 
 ## Usage
 1. Start the Flask development server
-`python run.py`
+`python3 run.py`
 
 2. The backend should now be running at `http://localhost:5000/`.
 
 ## Testing
-To run the test located in `/test_api.py`. Run 
+To run the unit tests located in `/test_api.py`. Run 
 ```
 python3 test_api.py
 ```

@@ -4,9 +4,8 @@
 - Python 3.x
 - Flask
 
-## Install Dependencies
 
-## Installation
+## Development Setup
 1. Clone the repository
 `git clone https://github.com/thevictorwhyte/p2p-payment-app.git`
 
@@ -45,7 +44,8 @@
 └── README.md
 ```
 
-## Endpoints
+## Endpoints Documentation
+Documentation of available API endpoints including the URL, request parameters, and the response body
 - `/users` (POST)
   - POST: Add a new user
 - `/deposit` (POST)
@@ -56,5 +56,27 @@
   - POST: Retrieve a user's balance in the app
 - `/withdraw` (POST)
   - POST: Transfer money out of the app
+
+### `POST /users`
+- Adds a new user to the system.
+- Sample Request body:
+  ```json
+  {
+    "name": "Victor Whyte",
+    "email": "victor@gmail.com"
+  }
+  ```
+- Sample response object:
+  ```json
+  {
+    "success": true,
+    "user": {
+        "balance": 0,
+        "email": "victor@gmail.com",
+        "id": "8edfe67e-2a8d-428e-bcf5-0fc9aa8db63c",
+        "name": "Victor David"
+    }
+  }
+  ```
 
 
